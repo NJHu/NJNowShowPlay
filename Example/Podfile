@@ -1,7 +1,25 @@
+def public_pods
+
+source 'https://github.com/CocoaPods/Specs.git' # 公有源
+
+end
+
+def njspec_pods
+source 'https://github.com/NJHu/NJSpecs.git' # NJ 私有源
+
+pod 'NJNowShowPlay', :path => '../'
+end
+
+platform :ios, '10.3'
+
 use_frameworks!
 
 target 'NJNowShowPlay_Example' do
-  pod 'NJNowShowPlay', :path => '../'
+    inhibit_all_warnings!
+
+    public_pods
+
+    njspec_pods
 
   target 'NJNowShowPlay_Tests' do
     inherit! :search_paths

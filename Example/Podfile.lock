@@ -1,0 +1,16 @@
+PODS:
+  - NJNowShowPlay (0.1.0)
+
+DEPENDENCIES:
+  - NJNowShowPlay (from `../`)
+
+EXTERNAL SOURCES:
+  NJNowShowPlay:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  NJNowShowPlay: f1cb358a502e579966863bb1312c62956ad3fb3a
+
+PODFILE CHECKSUM: 757a633c428fbe081434a414179886f2b8eb8978
+
+COCOAPODS: 1.5.3
