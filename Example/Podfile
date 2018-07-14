@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'NJNowShowPlay_Example' do
+  pod 'NJNowShowPlay', :path => '../'
+
+  target 'NJNowShowPlay_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
