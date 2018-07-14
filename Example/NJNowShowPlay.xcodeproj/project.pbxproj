@@ -32,7 +32,7 @@
 		3D9FC690BC2D39796A4C0047 /* Pods-NJNowShowPlay_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NJNowShowPlay_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NJNowShowPlay_Tests/Pods-NJNowShowPlay_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		4C7C60A0912C27F2B1F5EA0D /* Pods-NJNowShowPlay_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NJNowShowPlay_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-NJNowShowPlay_Example/Pods-NJNowShowPlay_Example.release.xcconfig"; sourceTree = "<group>"; };
 		5BAEC10589F8CB9B9CC76D50 /* Pods_NJNowShowPlay_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NJNowShowPlay_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EFA88BFB991CB050A921455 /* NJNowShowPlay.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NJNowShowPlay.podspec; path = ../NJNowShowPlay.podspec; sourceTree = "<group>"; };
+		5EFA88BFB991CB050A921455 /* NJNowShowPlay.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NJNowShowPlay.podspec; path = ../NJNowShowPlay.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* NJNowShowPlay_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NJNowShowPlay_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +171,7 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				ECD94D6C6A06BEBFAED69CFE /* [CP] Embed Pods Frameworks */,
+				D838B0C022AA2133091D9246 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -279,6 +280,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D838B0C022AA2133091D9246 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NJNowShowPlay_Example/Pods-NJNowShowPlay_Example-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/NJDYPlayer/NJDYPlayer.bundle",
+				"${PODS_ROOT}/../../NJNowShowPlay/Assets/NJNowShowPlay.xcassets",
+				"${PODS_CONFIGURATION_BUILD_DIR}/NJNowShowPlay/NJNowShowPlay.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NJDYPlayer.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NJNowShowPlay.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NJNowShowPlay_Example/Pods-NJNowShowPlay_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EB81277CA3824E0694234A54 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -304,11 +327,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NJNowShowPlay_Example/Pods-NJNowShowPlay_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/NJNowShowPlay/NJNowShowPlay.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/NJKit/NJKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NJNowShowPlay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NJKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

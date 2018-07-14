@@ -1,16 +1,53 @@
 PODS:
-  - NJNowShowPlay (0.1.0)
+  - Alamofire (4.7.3)
+  - AlamofireImage (3.3.1):
+    - Alamofire (~> 4.5)
+  - MJRefresh (3.1.15.3)
+  - NJDYPlayer (1.0.0):
+    - NJIJKPlayer
+  - NJIJKPlayer (1.0.1)
+  - NJKit (1.0.7):
+    - Alamofire
+    - AlamofireImage
+    - MJRefresh
+    - SnapKit
+    - SwiftyJSON
+  - NJNowShowPlay (1.0.0):
+    - NJDYPlayer
+    - NJKit
+  - SnapKit (4.0.0)
+  - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - NJNowShowPlay (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
+    - MJRefresh
+    - SnapKit
+    - SwiftyJSON
+  https://github.com/NJHu/NJSpecs.git:
+    - NJDYPlayer
+    - NJIJKPlayer
+    - NJKit
 
 EXTERNAL SOURCES:
   NJNowShowPlay:
     :path: "../"
 
 SPEC CHECKSUMS:
-  NJNowShowPlay: f1cb358a502e579966863bb1312c62956ad3fb3a
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  NJDYPlayer: 97287e81d4ffaeaba139922f665160a802302c70
+  NJIJKPlayer: 9b94241cf3b6d1e6907bbefc9290330a2f705435
+  NJKit: 3f2dac6256cf07dc9fc90e86866702cfc2c2e130
+  NJNowShowPlay: 151dffb30cc61b1626a0457eb0ae801cb7e59f46
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 757a633c428fbe081434a414179886f2b8eb8978
+PODFILE CHECKSUM: 594dd9a01c9f3ad65c17ac1454c8ef560ded10fb
 
 COCOAPODS: 1.5.3
