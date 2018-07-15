@@ -22,9 +22,12 @@ public class NJNowShowPlayController: NJViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let liveUrl = self.liveUrl {
-            var videoUrl = "http://hls1a.douyucdn.cn/live/952595rcJxorfZgs_550/playlist.m3u8?wsSecret=c3abb51298f113ed4640f8b045ba0677&wsTime=1531583033&token=-0-952595-18b09c983aa4b2219e9db330c85d809c&did=132a5f160ab79028a1d4edf600051531"
-            moviePlayer?.prepareToPlay(contentURLString: videoUrl)
+            moviePlayer?.prepareToPlay(contentURLString: liveUrl)
         }
+    }
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        moviePlayer?.shutdown()
     }
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -51,23 +54,10 @@ extension NJNowShowPlayController {
 
 // MARK:- NJPlayerControllerDelegate
 extension NJNowShowPlayController: NJPlayerControllerDelegate {
-    public func playerController(_ playerController: NJPlayerController, playReady contentURLString: String) -> Bool {
-        return true
-    }
-    public func playerController(_ playerController: NJPlayerController, playing contentURLString: String) {
-        
-    }
-    public func playerController(_ playerController: NJPlayerController, loading contentURLString: String) {
-        
-    }
-    public func playerController(_ playerController: NJPlayerController, unKnowFinished contentURLString: String) {
-        
-    }
-    public func playerController(_ playerController: NJPlayerController, finished contentURLString: String) {
-        
-    }
+    
 }
 
+// MARK:- StatusBar&Screen
 extension NJNowShowPlayController {
     public override var prefersStatusBarHidden: Bool {
         return false
