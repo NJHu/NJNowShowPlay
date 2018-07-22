@@ -22,12 +22,12 @@ public class NJNowShowPlayController: NJViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let liveUrl = self.liveUrl {
-            moviePlayer?.prepareToPlay(contentURLString: liveUrl)
+//            moviePlayer?.prepareToPlay(contentURLString: liveUrl)
         }
     }
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        moviePlayer?.shutdown()
+//        moviePlayer?.shutdown()
     }
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -38,7 +38,7 @@ public class NJNowShowPlayController: NJViewController {
 extension NJNowShowPlayController {
     private func setupPlayer() {
         view.backgroundColor = UIColor.black
-        moviePlayer = NJPlayerController(containerView: self.view, delegate: self)
+//        moviePlayer = NJPlayerController(containerView: self.view, delegate: self)
     }
     private func setupMaskControlView() -> Void {
         view.addSubview(maskControlView)
@@ -52,10 +52,10 @@ extension NJNowShowPlayController {
     }
 }
 
-// MARK:- NJPlayerControllerDelegate
-extension NJNowShowPlayController: NJPlayerControllerDelegate {
-    
-}
+//// MARK:- NJPlayerControllerDelegate
+//extension NJNowShowPlayController: NJPlayerControllerDelegate {
+//
+//}
 
 // MARK:- StatusBar&Screen
 extension NJNowShowPlayController {
