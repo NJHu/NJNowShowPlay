@@ -13,33 +13,36 @@ public class NJNowShowPlayController: NJViewController {
     public var liveUrl: String?
     private var maskControlView = UIView()
     private let closeBtn = UIButton(type: .custom)
-    private var moviePlayer: NJPlayerController?
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
-        setupPlayer()
         setupMaskControlView()
+        view.backgroundColor = UIColor.black
+        if let liveUrl = self.liveUrl {
+            NJPlayerManager.sharedManager.prepareToPlay(contentURLString: liveUrl, in: self.view, shouldAutorotate: false)
+        }
     }
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let liveUrl = self.liveUrl {
-//            moviePlayer?.prepareToPlay(contentURLString: liveUrl)
+        if !NJPlayerManager.sharedManager.isPlaying {
+            if let liveUrl = self.liveUrl {
+                NJPlayerManager.sharedManager.play()
+            }
         }
     }
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        moviePlayer?.shutdown()
+        NJPlayerManager.sharedManager.shutdown()
     }
+    
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         closeBtn.frame = CGRect(x: self.view.frame.width - 34 - 10, y: 20, width: 34, height: 34);
+        self.view.bringSubview(toFront: maskControlView)
     }
 }
 // MARK:- UI
 extension NJNowShowPlayController {
-    private func setupPlayer() {
-        view.backgroundColor = UIColor.black
-//        moviePlayer = NJPlayerController(containerView: self.view, delegate: self)
-    }
     private func setupMaskControlView() -> Void {
         view.addSubview(maskControlView)
         maskControlView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -69,15 +72,11 @@ extension NJNowShowPlayController {
         return UIStatusBarAnimation.slide
     }
     public override var shouldAutorotate: Bool {
-        return true
+        return false
     }
     // MARK: - about keyboard orientation
     public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.allButUpsideDown;
-    }
-    //返回最优先显示的屏幕方向
-    public override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return UIInterfaceOrientation.portrait
+        return UIInterfaceOrientationMask.portrait;
     }
 }
 
