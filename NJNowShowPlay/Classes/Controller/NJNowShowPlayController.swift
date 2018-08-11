@@ -19,26 +19,27 @@ public class NJNowShowPlayController: NJViewController {
         setupMaskControlView()
         view.backgroundColor = UIColor.black
         if let liveUrl = self.liveUrl {
-            NJPlayerManager.sharedManager.prepareToPlay(contentURLString: liveUrl, in: self.view, shouldAutorotate: false)
+            NJVideoPlayerManager.sharedManager.prepareToPlay(contentURLString: liveUrl, in: maskControlView, shouldAutorotate: false, delegate: self)
         }
     }
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !NJPlayerManager.sharedManager.isPlaying {
+        if !NJVideoPlayerManager.sharedManager.isPlaying {
             if let liveUrl = self.liveUrl {
-                NJPlayerManager.sharedManager.play()
+                NJVideoPlayerManager.sharedManager.play()
             }
         }
     }
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NJPlayerManager.sharedManager.shutdown()
+        NJVideoPlayerManager.sharedManager.shutdown()
     }
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         closeBtn.frame = CGRect(x: self.view.frame.width - 34 - 10, y: 20, width: 34, height: 34);
         self.view.bringSubview(toFront: maskControlView)
+        maskControlView.bringSubview(toFront: closeBtn)
     }
 }
 // MARK:- UI
@@ -55,10 +56,6 @@ extension NJNowShowPlayController {
     }
 }
 
-//// MARK:- NJPlayerControllerDelegate
-//extension NJNowShowPlayController: NJPlayerControllerDelegate {
-//
-//}
 
 // MARK:- StatusBar&Screen
 extension NJNowShowPlayController {
@@ -84,5 +81,12 @@ extension NJNowShowPlayController {
 extension NJNowShowPlayController {
     @objc func closeThisLiveRoom() {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK:- NJVideoPlayerManagerDelegate
+extension NJNowShowPlayController: NJVideoPlayerManagerDelegate {
+    public func videoPlayerManager(_ videoPlayerManager: NJVideoPlayerManager, titleForContentURLString contentURLString: String) -> String? {
+        return liveUrl
     }
 }
