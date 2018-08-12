@@ -19,7 +19,7 @@ public class NJNowShowPlayController: NJViewController {
         setupMaskControlView()
         view.backgroundColor = UIColor.black
         if let liveUrl = self.liveUrl {
-            NJVideoPlayerManager.sharedManager.prepareToPlay(contentURLString: liveUrl, in: maskControlView, shouldAutorotate: false, delegate: self)
+            NJVideoPlayerManager.sharedManager.prepareToPlay(contentURLString: liveUrl, in: self.view, shouldAutorotate: false, delegate: self)
         }
     }
     public override func viewWillAppear(_ animated: Bool) {
