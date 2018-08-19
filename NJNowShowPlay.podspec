@@ -22,10 +22,8 @@ s.static_framework = true
 s.source_files = 'NJNowShowPlay/Classes/**/*'
 
 s.resource_bundles = {
-'NJNowShowPlay' => ['NJNowShowPlay/Assets/**/*.{plist,webp,png}']
+'NJNowShowPlay' => ['NJNowShowPlay/Assets/**/*.{plist,webp,png,xcassets}']
 }
-
-s.resources     = 'NJNowShowPlay/**/*.{xcassets}'
 
 s.frameworks   = 'UIKit'
 s.dependency 'NJKit'
