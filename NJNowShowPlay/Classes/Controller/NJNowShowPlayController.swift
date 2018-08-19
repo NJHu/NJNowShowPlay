@@ -11,7 +11,7 @@ import NJDYPlayer
 
 public class NJNowShowPlayController: NJViewController {
     public var liveUrl: String?
-    private var maskControlView = UIView()
+    lazy private var maskControlView = UIView(frame: CGRect(x: 0, y: UIApplication.shared.statusBarFrame.height, width: self.view.frame.width, height: self.view.frame.height - UIApplication.shared.statusBarFrame.height))
     private let closeBtn = UIButton(type: .custom)
     
     override public func viewDidLoad() {
@@ -19,7 +19,7 @@ public class NJNowShowPlayController: NJViewController {
         setupMaskControlView()
         view.backgroundColor = UIColor.black
         if let liveUrl = self.liveUrl {
-            NJVideoPlayerManager.sharedManager.prepareToPlay(contentURLString: liveUrl, in: self.view, shouldAutorotate: false, delegate: self)
+            NJVideoPlayerManager.sharedManager.prepareToPlay(contentURLString: liveUrl, in: maskControlView, shouldAutorotate: false, delegate: self)
         }
     }
     public override func viewWillAppear(_ animated: Bool) {
@@ -37,22 +37,28 @@ public class NJNowShowPlayController: NJViewController {
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        closeBtn.frame = CGRect(x: self.view.frame.width - 34 - 10, y: 20, width: 34, height: 34);
-        self.view.bringSubview(toFront: maskControlView)
-        maskControlView.bringSubview(toFront: closeBtn)
+        maskControlView.frame = CGRect(x: 0, y: UIApplication.shared.statusBarFrame.height, width: self.view.frame.width, height: self.view.frame.height - UIApplication.shared.statusBarFrame.height)
+        closeBtn.frame = CGRect(x: self.view.frame.width - 34 - 10, y: 20 + UIApplication.shared.statusBarFrame.height, width: 34, height: 34);
     }
 }
 // MARK:- UI
 extension NJNowShowPlayController {
     private func setupMaskControlView() -> Void {
         view.addSubview(maskControlView)
-        maskControlView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        maskControlView.frame = view.bounds
         maskControlView.backgroundColor = UIColor.clear
-        maskControlView.addSubview(closeBtn)
+        view.addSubview(closeBtn)
+        maskControlView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         closeBtn.setImage(UIImage.nj_image(name: "anchor_close_highlight", bundleClass: NJNowShowPlayController.self), for: .normal)
         closeBtn.setImage(UIImage.nj_image(name: "anchor_close_normal", bundleClass: NJNowShowPlayController.self), for: .normal)
         closeBtn.addTarget(self, action: #selector(closeThisLiveRoom), for: .touchUpInside)
+        
+        let statusBarBg = UIView()
+        statusBarBg.backgroundColor = UIColor.black
+        view.addSubview(statusBarBg)
+        statusBarBg.snp.makeConstraints { (make) in
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo(50)
+        }
     }
 }
 
@@ -63,7 +69,7 @@ extension NJNowShowPlayController {
         return false
     }
     public  override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.default
+        return UIStatusBarStyle.lightContent
     }
     public  override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return UIStatusBarAnimation.slide
