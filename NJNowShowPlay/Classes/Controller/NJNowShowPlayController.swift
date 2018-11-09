@@ -39,7 +39,7 @@ public class NJNowShowPlayController: NJViewController {
         super.viewDidLayoutSubviews()
         maskControlView.frame = CGRect(x: 0, y: UIApplication.shared.statusBarFrame.height, width: self.view.frame.width, height: self.view.frame.height - UIApplication.shared.statusBarFrame.height)
         closeBtn.frame = CGRect(x: self.view.frame.width - 34 - 10, y: 20 + UIApplication.shared.statusBarFrame.height, width: 34, height: 34);
-        view.bringSubview(toFront: closeBtn)
+        view.bringSubviewToFront(closeBtn)
     }
 }
 // MARK:- UI
